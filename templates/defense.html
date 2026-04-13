@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Defense Mode</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+
+</head>
+
+<body>
+
+<h2>🛡 Password Hashing & Strength</h2>
+
+<div class="container">
+
+<form method="POST">
+
+<input type="text" name="password" placeholder="Enter Password">
+
+<select name="method">
+
+<option value="sha256">SHA256</option>
+<option value="bcrypt">bcrypt</option>
+
+</select>
+
+<button type="submit">Generate</button>
+
+</form>
+
+{% if strength %}
+
+<div class="results">
+
+<p>Strength: {{ strength }}</p>
+
+<code>{{ hashed }}</code>
+
+</div>
+
+{% endif %}
+
+<a href="/">Back</a>
+
+</div>
+
+</body>
+</html>

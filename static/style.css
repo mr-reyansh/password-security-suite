@@ -1,0 +1,153 @@
+/* BODY */
+
+body{
+margin:0;
+background:black;
+color:#00ff00;
+font-family:monospace;
+text-align:center;
+}
+
+/* MATRIX CANVAS BACKGROUND */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:0;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+
+position:relative;
+z-index:10;
+
+width:500px;
+margin:auto;
+margin-top:120px;
+
+padding:40px;
+
+border:2px solid #00ff00;
+
+background:rgba(0,0,0,0.85);
+
+box-shadow:0 0 20px #00ff00;
+
+}
+
+/* TITLES */
+
+h1,h2{
+margin-top:40px;
+color:#00ff00;
+}
+
+/* LINKS AS BUTTONS */
+
+a{
+
+display:inline-block;
+
+padding:10px 20px;
+
+margin:15px;
+
+background:#00ff00;
+color:black;
+
+text-decoration:none;
+
+font-weight:bold;
+
+border-radius:4px;
+
+}
+
+a:hover{
+
+background:#00cc00;
+
+}
+
+/* INPUT FIELDS */
+
+input,select{
+
+padding:10px;
+
+margin:10px;
+
+border:1px solid #00ff00;
+
+background:black;
+color:#00ff00;
+
+}
+
+/* BUTTON */
+
+button{
+
+padding:10px 15px;
+
+background:black;
+
+color:#00ff00;
+
+border:1px solid #00ff00;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#00ff00;
+color:black;
+
+}
+
+/* TERMINAL */
+
+#terminal{
+
+margin-top:20px;
+
+height:220px;
+
+overflow:auto;
+
+border:2px solid #00ff00;
+
+padding:10px;
+
+background:black;
+
+font-size:14px;
+
+}
+
+/* RESULT BOX */
+
+.results{
+
+margin-top:20px;
+
+padding:15px;
+
+border:2px solid #00ff00;
+
+background:rgba(0,0,0,0.8);
+
+}
+
+/* GLOW EFFECT */
+
+.container:hover{
+
+box-shadow:0 0 30px #00ff00;
+
+}

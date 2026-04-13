@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Attack Mode</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+
+</head>
+
+<body>
+
+<h2>💣 Password Cracker</h2>
+
+<div class="container">
+
+<form method="POST" enctype="multipart/form-data" id="attackForm">
+
+<input type="text" name="target_hash" placeholder="Target Hash" required>
+
+<br>
+
+<select name="method" id="methodSelect">
+
+<option value="brute">Brute Force</option>
+<option value="hybrid">Hybrid</option>
+<option value="rainbow">Rainbow</option>
+
+</select>
+
+<br>
+
+<div id="wordlistField">
+
+<input type="file" name="wordlist">
+
+</div>
+
+<div id="maxLengthField">
+
+<input type="number" name="max_length" value="4">
+
+</div>
+
+<br>
+
+<button type="submit">Start Attack</button>
+
+</form>
+
+<h3>⚡ Live Cracking Terminal</h3>
+
+<div id="terminal"></div>
+
+{% if result %}
+
+<div class="results">
+
+<p>{{ result }}</p>
+
+</div>
+
+{% endif %}
+
+<a href="/">Back</a>
+
+</div>
+
+<script>
+
+// field switching logic
+
+const methodSelect = document.getElementById("methodSelect");
+const wordlistField = document.getElementById("wordlistField");
+const maxLengthField = document.getElementById("maxLengthField");
+
+function updateFields(){
+
+const method = methodSelect.value;
+
+if(method === "brute"){
+
+wordlistField.style.display = "none";
+maxLengthField.style.display = "block";
+
+}
+
+else if(method === "hybrid"){
+
+wordlistField.style.display = "block";
+maxLengthField.style.display = "none";
+
+}
+
+else if(method === "rainbow"){
+
+wordlistField.style.display = "none";
+maxLengthField.style.display = "none";
+
+}
+
+}
+
+methodSelect.addEventListener("change", updateFields);
+
+updateFields();
+
+
+// live cracking animation
+
+const terminal = document.getElementById("terminal");
+
+function randomAttempt(){
+
+const chars="abcdefghijklmnopqrstuvwxyz0123456789";
+
+let attempt="";
+
+for(let i=0;i<6;i++){
+
+attempt+=chars[Math.floor(Math.random()*chars.length)];
+
+}
+
+return attempt;
+
+}
+
+document.getElementById("attackForm").addEventListener("submit",function(){
+
+let counter=0;
+
+let interval=setInterval(function(){
+
+const line=document.createElement("div");
+
+line.textContent="Trying password: "+randomAttempt();
+
+terminal.appendChild(line);
+
+terminal.scrollTop=terminal.scrollHeight;
+
+counter++;
+
+if(counter>60){
+
+clearInterval(interval);
+
+}
+
+},100);
+
+});
+
+</script>
+
+</body>
+
+</html>
